@@ -9,8 +9,10 @@
 import UIKit
 import RealmSwift
 
-class AddCatagoryViewController: UITableViewController {
+class AddCatagoryViewController: UITableViewController, UITextFieldDelegate {
     let realm = try! Realm()
+
+    @IBOutlet weak var doneButtonOutlet: UIBarButtonItem!
     @IBOutlet weak var catagoryTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,13 +25,40 @@ class AddCatagoryViewController: UITableViewController {
         
         print(realm.configuration.fileURL!)
     }
-    @IBAction func Done(_ sender: UIBarButtonItem) {
+    
+    
+    // MARK:- Text Field Delegate Start
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+
+        let oldText = catagoryTextField.text!
+        let stringRange = Range(range, in:oldText)!
+        let newText = oldText.replacingCharacters(in: stringRange, with: string)
+
+            if newText.isEmpty {
+            doneButtonOutlet.isEnabled = false
+            } else {
+            doneButtonOutlet.isEnabled = true
+            }
+            return true
+    }
+    
+    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        doneButtonOutlet.isEnabled = false
+        return true
+    }
+    // MARK:- Text Field Delegate End
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        catagoryTextField.becomeFirstResponder()
+    }
+    @IBAction func Done(_ sender: Any) {
         print(catagoryTextField.text!)
         
         let catagory = Catagory()
         catagory.id = incrementID()
         catagory.name = catagoryTextField.text!
-        
+
         do {
             try self.realm.write {
                 self.realm.add(catagory)
@@ -47,7 +76,7 @@ class AddCatagoryViewController: UITableViewController {
     }
     
     func incrementID() -> Int {
-        let id = (realm.objects(Task.self).max(ofProperty: "id") as Int? ?? 0) + 1
+        let id = (realm.objects(Catagory.self).max(ofProperty: "id") as Int? ?? 0) + 1
         return id
     }
    

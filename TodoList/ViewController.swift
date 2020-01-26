@@ -7,22 +7,35 @@
 //
 
 import UIKit
+import RealmSwift
 
 class ViewController: UITableViewController {
-
+    let realm = try! Realm()
+    var catagories : Results<Catagory>? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
+    override func viewWillAppear(_ animated: Bool) {
+        catagories = realm.objects(Catagory.self)
+        self.tableView.reloadData()
+    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return (catagories?.count)!
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "catagoryCell", for: indexPath)
-        cell.textLabel?.text = "Cell at section \(indexPath.section) : row \(indexPath.row)"
+        cell.textLabel?.text = catagories![indexPath.row].name
         return cell
         
+    }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+//        present(TasksTableViewController, animated: true, completion: nil)
+        performSegue(withIdentifier: "catagoryCellToTasks", sender: self)
+        print(indexPath.row)
     }
 
 

@@ -10,6 +10,7 @@
 		2113EF4A23DC9ECF0009A7D2 /* AddCatagoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2113EF4923DC9ECF0009A7D2 /* AddCatagoryViewController.swift */; };
 		21251BE323DD4119009BC412 /* Catagory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21251BE223DD4119009BC412 /* Catagory.swift */; };
 		21251BE523DD4186009BC412 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21251BE423DD4186009BC412 /* Task.swift */; };
+		21251BE723DD5A09009BC412 /* TasksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21251BE623DD5A09009BC412 /* TasksTableViewController.swift */; };
 		21919D4923DB34E60020C5A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21919D4823DB34E60020C5A2 /* AppDelegate.swift */; };
 		21919D4B23DB34E60020C5A2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21919D4A23DB34E60020C5A2 /* ViewController.swift */; };
 		21919D4E23DB34E60020C5A2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21919D4C23DB34E60020C5A2 /* Main.storyboard */; };
@@ -22,6 +23,7 @@
 		2113EF4923DC9ECF0009A7D2 /* AddCatagoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCatagoryViewController.swift; sourceTree = "<group>"; };
 		21251BE223DD4119009BC412 /* Catagory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Catagory.swift; sourceTree = "<group>"; };
 		21251BE423DD4186009BC412 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		21251BE623DD5A09009BC412 /* TasksTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksTableViewController.swift; sourceTree = "<group>"; };
 		21919D4523DB34E60020C5A2 /* TodoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21919D4823DB34E60020C5A2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		21919D4A23DB34E60020C5A2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 				21919D5423DB34EF0020C5A2 /* Info.plist */,
 				21251BE223DD4119009BC412 /* Catagory.swift */,
 				21251BE423DD4186009BC412 /* Task.swift */,
+				21251BE623DD5A09009BC412 /* TasksTableViewController.swift */,
 			);
 			path = TodoList;
 			sourceTree = "<group>";
@@ -212,6 +215,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21251BE723DD5A09009BC412 /* TasksTableViewController.swift in Sources */,
 				21919D4B23DB34E60020C5A2 /* ViewController.swift in Sources */,
 				21919D4923DB34E60020C5A2 /* AppDelegate.swift in Sources */,
 				21251BE523DD4186009BC412 /* Task.swift in Sources */,

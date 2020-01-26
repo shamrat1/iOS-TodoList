@@ -25,6 +25,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="kQ0-tG-b9k" kind="show" identifier="catagoryCellToTasks" trigger="accessoryAction" id="xsT-PU-51k"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -42,7 +45,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qsE-sA-rVm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1121" y="191"/>
+            <point key="canvasLocation" x="1130" y="191"/>
         </scene>
         <!--Add Catagory-->
         <scene sceneID="YB5-HC-Toq">
@@ -62,11 +65,15 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Catagory Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vKP-Tx-sxi">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Catagory Name" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="vKP-Tx-sxi">
                                                     <rect key="frame" x="8" y="8" width="359" height="28"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                                    <connections>
+                                                        <action selector="Done:" destination="Oot-XX-Iiw" eventType="editingDidEndOnExit" id="iCb-ER-pya"/>
+                                                        <outlet property="delegate" destination="Oot-XX-Iiw" id="Skw-fM-Yz8"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -86,7 +93,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Add Catagory" id="Egy-Q4-pV6">
-                        <barButtonItem key="rightBarButtonItem" title="Done" id="6Vg-tw-VX3">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Done" id="6Vg-tw-VX3">
                             <connections>
                                 <action selector="Done:" destination="Oot-XX-Iiw" id="o5Z-kd-8c4"/>
                             </connections>
@@ -94,11 +101,40 @@
                     </navigationItem>
                     <connections>
                         <outlet property="catagoryTextField" destination="vKP-Tx-sxi" id="yac-kj-aoX"/>
+                        <outlet property="doneButtonOutlet" destination="6Vg-tw-VX3" id="Cag-gt-9sG"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LqB-a4-yD6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1870" y="190"/>
+            <point key="canvasLocation" x="2079" y="-111"/>
+        </scene>
+        <!--All Tasks-->
+        <scene sceneID="sbs-C8-vYQ">
+            <objects>
+                <tableViewController title="All Tasks" id="kQ0-tG-b9k" customClass="TasksTableViewController" customModule="TodoList" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Q1P-tj-dvX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="taskCell" id="eRu-qq-D5Z">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eRu-qq-D5Z" id="EAY-Is-qkq">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="kQ0-tG-b9k" id="LML-WX-XM3"/>
+                            <outlet property="delegate" destination="kQ0-tG-b9k" id="Oxj-q7-XeT"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NdJ-5F-aft" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2078" y="561"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="yyl-g9-IaZ">
