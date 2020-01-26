@@ -53,8 +53,6 @@ class AddCatagoryViewController: UITableViewController, UITextFieldDelegate {
         catagoryTextField.becomeFirstResponder()
     }
     @IBAction func Done(_ sender: Any) {
-        print(catagoryTextField.text!)
-        
         let catagory = Catagory()
         catagory.id = incrementID()
         catagory.name = catagoryTextField.text!

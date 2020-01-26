@@ -18,11 +18,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="catagoryCell" id="wwT-23-xVU">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="catagoryCell" id="wwT-23-xVU">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wwT-23-xVU" id="zOn-KX-MsV">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="307" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
@@ -111,7 +111,7 @@
         <!--All Tasks-->
         <scene sceneID="sbs-C8-vYQ">
             <objects>
-                <tableViewController title="All Tasks" id="kQ0-tG-b9k" customClass="TasksTableViewController" customModule="TodoList" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="kQ0-tG-b9k" customClass="TasksTableViewController" customModule="TodoList" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Q1P-tj-dvX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -131,6 +131,13 @@
                             <outlet property="delegate" destination="kQ0-tG-b9k" id="Oxj-q7-XeT"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="All Tasks" id="mf8-R1-JNS">
+                        <barButtonItem key="rightBarButtonItem" title="Add" id="JjI-8I-Dkf">
+                            <connections>
+                                <action selector="onClickAddNewTask:" destination="kQ0-tG-b9k" id="3vU-Ce-fbG"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NdJ-5F-aft" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
