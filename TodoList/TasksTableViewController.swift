@@ -7,21 +7,41 @@
 //
 
 import UIKit
+import RealmSwift
 
+//
+//protocol TasksViewControllerDelegate {
+//    func catagoryObject(item: Catagory)
+//}
 class TasksTableViewController: UITableViewController {
-
+    let realm = try! Realm()
+    var catagory : Catagory?
+    var tasks : Results<Task>?
+    
+//    var catagoryDelegate : TasksViewControllerDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+//        let task = Task()
+//        task.id = 1
+//        task.name = "Buy Frootika"
+//
+//        do {
+//            try realm.write {
+//                catagory?.tasks.append(task)
+//                print("added")
+//            }
+//        } catch  {
+//            print("not added")
+//        }
+        
     }
 
     // MARK: - Table view data source
-
+    override func viewWillAppear(_ animated: Bool) {
+        
+    }
     
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

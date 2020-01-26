@@ -12,7 +12,7 @@ import RealmSwift
 class ViewController: UITableViewController {
     let realm = try! Realm()
     var catagories : Results<Catagory>? = nil
-    
+    var index : Int?
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -32,10 +32,14 @@ class ViewController: UITableViewController {
         
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-//        present(TasksTableViewController, animated: true, completion: nil)
+        self.index = indexPath.row
         performSegue(withIdentifier: "catagoryCellToTasks", sender: self)
-        print(indexPath.row)
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "catagoryCellToTasks"{
+            let taskVC = segue.destination as! TasksTableViewController
+            taskVC.catagory = catagories![index!]
+        }
     }
 
 
