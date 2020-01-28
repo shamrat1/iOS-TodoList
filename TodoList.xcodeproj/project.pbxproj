@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0405D6E223DFF04300B2C56D /* NewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0405D6E123DFF04300B2C56D /* NewTaskViewController.swift */; };
 		2113EF4A23DC9ECF0009A7D2 /* AddCatagoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2113EF4923DC9ECF0009A7D2 /* AddCatagoryViewController.swift */; };
 		21251BE323DD4119009BC412 /* Catagory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21251BE223DD4119009BC412 /* Catagory.swift */; };
 		21251BE523DD4186009BC412 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21251BE423DD4186009BC412 /* Task.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0405D6E123DFF04300B2C56D /* NewTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskViewController.swift; sourceTree = "<group>"; };
 		2113EF4923DC9ECF0009A7D2 /* AddCatagoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCatagoryViewController.swift; sourceTree = "<group>"; };
 		21251BE223DD4119009BC412 /* Catagory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Catagory.swift; sourceTree = "<group>"; };
 		21251BE423DD4186009BC412 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 				21251BE223DD4119009BC412 /* Catagory.swift */,
 				21251BE423DD4186009BC412 /* Task.swift */,
 				21251BE623DD5A09009BC412 /* TasksTableViewController.swift */,
+				0405D6E123DFF04300B2C56D /* NewTaskViewController.swift */,
 			);
 			path = TodoList;
 			sourceTree = "<group>";
@@ -216,6 +219,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				21251BE723DD5A09009BC412 /* TasksTableViewController.swift in Sources */,
+				0405D6E223DFF04300B2C56D /* NewTaskViewController.swift in Sources */,
 				21919D4B23DB34E60020C5A2 /* ViewController.swift in Sources */,
 				21919D4923DB34E60020C5A2 /* AppDelegate.swift in Sources */,
 				21251BE523DD4186009BC412 /* Task.swift in Sources */,
