@@ -26,14 +26,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
-        let content = UNMutableNotificationContent()
-        content.title = "Hello!"
-        content.body = "I'm a Local Notifier."
-        content.sound = UNNotificationSound.default
-        
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
-        let request = UNNotificationRequest(identifier: "taskNotification", content: content, trigger: trigger)
-        center.add(request)
+//        let content = UNMutableNotificationContent()
+//        content.title = "Hello!"
+//        content.body = "I'm a Local Notifier."
+//        content.sound = UNNotificationSound.default
+//        
+//        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
+//        let request = UNNotificationRequest(identifier: "taskNotification", content: content, trigger: trigger)
+//        center.add(request)
         
         return true
     }

@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import UserNotifications
+import RealmSwift
+
 extension UIViewController{
     func hideKeyboardOnTap(){
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
@@ -16,8 +19,9 @@ extension UIViewController{
         view.endEditing(true)
     }
 }
-class NewTaskViewController: UIViewController, UITextFieldDelegate {
 
+class NewTaskViewController: UIViewController, UITextFieldDelegate {
+    let realm = try! Realm()
     @IBOutlet weak var editText: UITextField!
     @IBOutlet weak var reminderSwitch: UISwitch!
     @IBOutlet weak var datePickerLabel: UILabel!
@@ -27,8 +31,10 @@ class NewTaskViewController: UIViewController, UITextFieldDelegate {
     
     var dueDate = Date()
     var reminder = false
+    var catagory : Catagory?
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         self.hideKeyboardOnTap()
         editText.becomeFirstResponder()
@@ -62,8 +68,22 @@ class NewTaskViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func onClickDone(_ sender: Any) {
         print("\(dueDate) \n \(reminder) \n \(editText.text!)")
+        let id = incrementID()
+        scheduleNotification(id: id)
         
-        scheduleNotification()
+        
+        do {
+            try realm.write {
+                if let singleCat = catagory {
+                    let task = Task()
+                    task.name = editText.text!
+                    task.id = id
+                    singleCat.tasks.append(task)
+                }
+            }
+        } catch {
+            print("data not added.")
+        }
         navigationController?.popViewController(animated: true)
     }
     
@@ -85,7 +105,7 @@ class NewTaskViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    func scheduleNotification(){
+    func scheduleNotification(id: Int){
         if reminder && dueDate > Date(){
             print("Scheduling Notification")
             let content = UNMutableNotificationContent()
@@ -98,12 +118,17 @@ class NewTaskViewController: UIViewController, UITextFieldDelegate {
             
             let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
             
-            let request = UNNotificationRequest(identifier: "MyReminder", content: content, trigger: trigger)
+            let request = UNNotificationRequest(identifier: "task-\(id)", content: content, trigger: trigger)
             let center = UNUserNotificationCenter.current()
             center.add(request)
             print("added")
         }
     }
     
+    func incrementID() -> Int {
+        let id = (realm.objects(Catagory.self).max(ofProperty: "id") as Int? ?? 0) + 1
+        return id
+    }
+
 
 }

@@ -58,40 +58,13 @@ class TasksTableViewController: UITableViewController {
     }
     
     @IBAction func onClickAddNewTask(_ sender: Any) {
-//        let alert = UIAlertController(title: "Add New Task", message: "", preferredStyle: UIAlertController.Style.alert)
-//        let saveAction = UIAlertAction(title: "Save", style: .default, handler: { (saveBtn) in
-//            do {
-//                let task = Task()
-//                task.id = self.incrementID()
-//                task.name = alert.textFields![0].text!
-//                task.isCompleted = false
-//                try self.realm.write {
-//                    self.catagory?.tasks.append(task)
-//                }
-//                self.tableView.reloadData()
-//            } catch{
-//                print("New Task Can't be added.")
-//            }
-//        })
-//        alert.addAction(saveAction)
-//        alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: nil))
-//        alert.actions.first?.isEnabled = false
-//        alert.addTextField { (textField) in
-//            NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: textField, queue: OperationQueue.main, using: { _ in
-//                // Being in this block means that something fired the UITextFieldTextDidChange notification.
-//                // Access the textField object from alertController.addTextField(configurationHandler:) above and get the character count of its non whitespace characters
-//                let textCount = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines).count ?? 0
-//                // If the text contains non whitespace characters, enable the OK Button
-//                saveAction.isEnabled = textCount > 0 ? true : false
-//            })
-//        }
-//
-//        present(alert,animated: true)
-        performSegue(withIdentifier: "allTaskToAddTask", sender: self)
+
+        performSegue(withIdentifier: "allTaskToNewTask", sender: self)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "allTaskToAddTask"{
-            print("ok")
+        if segue.identifier == "allTaskToNewTask"{
+            let vc = segue.destination as! NewTaskViewController
+            vc.catagory = self.catagory
         }
     }
     
