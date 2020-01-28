@@ -63,9 +63,8 @@ class NewTaskViewController: UIViewController, UITextFieldDelegate {
     @IBAction func onClickDone(_ sender: Any) {
         print("\(dueDate) \n \(reminder) \n \(editText.text!)")
         
-        if reminder && dueDate > Date(){
-            print("Scheduling Notification")
-        }
+        scheduleNotification()
+        navigationController?.popViewController(animated: true)
     }
     
     @IBAction func onChangeDatePicker(_ sender: UIDatePicker) {
@@ -86,6 +85,25 @@ class NewTaskViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    func scheduleNotification(){
+        if reminder && dueDate > Date(){
+            print("Scheduling Notification")
+            let content = UNMutableNotificationContent()
+            content.title = "You've a task in pending."
+            content.body = "You're task is : \(editText.text!)"
+            content.sound = UNNotificationSound.default
+            
+            let calender = Calendar(identifier: .gregorian)
+            let components = calender.dateComponents([.year,.month,.day,.hour,.minute], from: dueDate)
+            
+            let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
+            
+            let request = UNNotificationRequest(identifier: "MyReminder", content: content, trigger: trigger)
+            let center = UNUserNotificationCenter.current()
+            center.add(request)
+            print("added")
+        }
+    }
     
 
 }

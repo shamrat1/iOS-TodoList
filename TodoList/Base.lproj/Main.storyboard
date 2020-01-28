@@ -159,7 +159,7 @@
                                             <constraint firstAttribute="height" constant="50" id="aXJ-vK-sAu"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                        <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0aN-Z8-5Ta" userLabel="switch View">
                                         <rect key="frame" x="20" y="150" width="335" height="50"/>
