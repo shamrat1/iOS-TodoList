@@ -9,14 +9,19 @@
 import UIKit
 import RealmSwift
 
-class AddCatagoryViewController: UITableViewController, UITextFieldDelegate {
+class AddCatagoryViewController: UITableViewController, UITextFieldDelegate, IconPickerViewDelegate {
+    
+    
     let realm = try! Realm()
-
+    var iconName = "folder"
+    @IBOutlet weak var iconView: UIImageView!
     @IBOutlet weak var doneButtonOutlet: UIBarButtonItem!
     @IBOutlet weak var catagoryTextField: UITextField!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        iconView.image = UIImage(named: iconName)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -48,6 +53,12 @@ class AddCatagoryViewController: UITableViewController, UITextFieldDelegate {
     }
     // MARK:- Text Field Delegate End
     
+    // MARK:- icon picker view Delegate
+    func iconPicker(_ picker: IconTableViewController, didPick iconName: String) {
+        iconView.image = UIImage(named: iconName)
+        self.iconName = iconName
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         catagoryTextField.becomeFirstResponder()
@@ -56,7 +67,7 @@ class AddCatagoryViewController: UITableViewController, UITextFieldDelegate {
         let catagory = Catagory()
         catagory.id = incrementID()
         catagory.name = catagoryTextField.text!
-
+        catagory.icon = iconName
         do {
             try self.realm.write {
                 self.realm.add(catagory)
@@ -70,7 +81,18 @@ class AddCatagoryViewController: UITableViewController, UITextFieldDelegate {
     }
     
     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        return nil
+        return indexPath.section == 1 ? indexPath : nil
+    }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 1 {
+            performSegue(withIdentifier: "catToIcon", sender: self)
+        }
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "catToIcon"{
+            let vc = segue.destination as! IconTableViewController
+            vc.delegate = self
+        }
     }
     
     func incrementID() -> Int {

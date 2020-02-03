@@ -17,11 +17,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="catagoryCell" id="wwT-23-xVU">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="catagoryCell" id="wwT-23-xVU">
                                 <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wwT-23-xVU" id="zOn-KX-MsV">
-                                    <rect key="frame" x="0.0" y="0.0" width="316" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="348" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
@@ -84,6 +84,45 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection id="oVd-33-RmZ">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="v2Y-gT-qLf">
+                                        <rect key="frame" x="0.0" y="98" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="v2Y-gT-qLf" id="i1e-aj-dd1">
+                                            <rect key="frame" x="0.0" y="0.0" width="348" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Icon" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ANW-1e-cu2">
+                                                    <rect key="frame" x="16" y="11.5" width="100" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="100" id="o9N-oE-eTU"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="folder" translatesAutoresizingMaskIntoConstraints="NO" id="6En-eN-6NK">
+                                                    <rect key="frame" x="302" y="4" width="36" height="36"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="36" id="cfX-hA-GcL"/>
+                                                        <constraint firstAttribute="height" constant="36" id="eL2-Nf-cZ1"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="ANW-1e-cu2" firstAttribute="leading" secondItem="i1e-aj-dd1" secondAttribute="leading" constant="16" id="1Ly-J1-q0p"/>
+                                                <constraint firstItem="6En-eN-6NK" firstAttribute="centerY" secondItem="i1e-aj-dd1" secondAttribute="centerY" id="3Ii-rt-Bqg"/>
+                                                <constraint firstItem="ANW-1e-cu2" firstAttribute="centerY" secondItem="i1e-aj-dd1" secondAttribute="centerY" id="dgj-Hk-pAg"/>
+                                                <constraint firstAttribute="trailing" secondItem="6En-eN-6NK" secondAttribute="trailing" constant="10" id="s7U-t7-Xef"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="YPD-Xw-3mL" kind="show" identifier="catToIcon" trigger="accessoryAction" id="urK-oG-dVn"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="Oot-XX-Iiw" id="VEw-2V-SQC"/>
@@ -100,11 +139,41 @@
                     <connections>
                         <outlet property="catagoryTextField" destination="vKP-Tx-sxi" id="yac-kj-aoX"/>
                         <outlet property="doneButtonOutlet" destination="6Vg-tw-VX3" id="Cag-gt-9sG"/>
+                        <outlet property="iconView" destination="6En-eN-6NK" id="OPz-wR-fwF"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LqB-a4-yD6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2079" y="-111"/>
+        </scene>
+        <!--Add Icon-->
+        <scene sceneID="gmQ-ha-mFa">
+            <objects>
+                <tableViewController id="YPD-Xw-3mL" customClass="IconTableViewController" customModule="TodoList" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="nvp-Cm-rzU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="iconCell" id="tVe-PY-goN">
+                                <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tVe-PY-goN" id="6hC-E7-upI">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="YPD-Xw-3mL" id="EG9-oQ-LPf"/>
+                            <outlet property="delegate" destination="YPD-Xw-3mL" id="nKB-kO-iVt"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Add Icon" id="2zm-YY-lU6"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Era-Zs-vp7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2793" y="-111"/>
         </scene>
         <!--All Tasks-->
         <scene sceneID="sbs-C8-vYQ">
@@ -307,7 +376,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SaB-EM-MUv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2890" y="561"/>
+            <point key="canvasLocation" x="2794" y="561"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="yyl-g9-IaZ">
@@ -328,4 +397,7 @@
             <point key="canvasLocation" x="344.80000000000001" y="191.1544227886057"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="folder" width="24" height="24"/>
+    </resources>
 </document>
