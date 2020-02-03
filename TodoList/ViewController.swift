@@ -28,8 +28,9 @@ class ViewController: UITableViewController {
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "catagoryCell", for: indexPath)
+        cell.imageView?.frame = CGRect(x: 8, y: 8, width: 36, height: 36)
         cell.imageView?.image = UIImage(named: catagories![indexPath.row].icon)
-        cell.imageView?.tintColor = .blue
+        
         cell.textLabel?.text = catagories![indexPath.row].name
         return cell
         
