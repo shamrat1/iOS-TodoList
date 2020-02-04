@@ -44,6 +44,53 @@ class TasksTableViewController: UITableViewController {
         cell.accessoryType = tasks![indexPath.row].isCompleted == true ? .checkmark : .none
         return cell
     }
+    override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let complete = UIContextualAction.init(style: .normal, title: "Edit") { (action, view, completion) in
+            
+            //...
+            let alert = UIAlertController(title: "Edit Task", message: "", preferredStyle: .alert)
+            
+            let updateAction = UIAlertAction(title: "Update", style: .default, handler: { (UIAlertAction) in
+                do {
+                    try self.realm.write {
+                        self.tasks![indexPath.row].name = (alert.textFields?.first?.text)!
+                        self.viewWillAppear(true)
+                    }
+                }catch {
+                    print("Task Cann't be added.")
+                }
+            
+            })
+            alert.addAction(updateAction)
+            
+            alert.addTextField { (textfield) in
+                textfield.placeholder = "\(self.tasks![indexPath.row].name)"
+                // Observe the UITextFieldTextDidChange notification to be notified in the below block when text is changed
+                updateAction.isEnabled = false
+                NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "UITextFieldTextDidChangeNotification"), object: textfield, queue: OperationQueue.main, using:
+                    {_ in
+                        // Being in this block means that something fired the UITextFieldTextDidChange notification.
+                        
+                        // Access the textField object from alertController.addTextField(configurationHandler:) above and get the character count of its non whitespace characters
+                        let textCount = textfield.text?.trimmingCharacters(in: .whitespacesAndNewlines).count ?? 0
+                        let textIsNotEmpty = textCount > 0
+                        
+                        // If the text contains non whitespace characters, enable the OK Button
+                        updateAction.isEnabled = textIsNotEmpty
+                }
+                
+            )}
+            alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: nil))
+            
+            self.present(alert, animated: true, completion: nil)
+        }
+        
+        let action = UISwipeActionsConfiguration.init(actions: [complete])
+        action.performsFirstActionWithFullSwipe = true //... Full swipe support
+        
+        return action
+        
+    }
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             do {
