@@ -12,7 +12,7 @@ protocol IconPickerViewDelegate : class {
     
 }
 class IconTableViewController: UITableViewController {
-    let icons = ["calender","drink","flight","folder","meeting","photo","shopping"]
+    let icons = ["calender","drink","flight","folder","meeting","photo","shopping","movie","bag","cake","gift"]
     var delegate: IconPickerViewDelegate?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +38,7 @@ class IconTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "iconCell", for: indexPath)
         cell.textLabel?.text = icons[indexPath.row]
         cell.imageView?.image = UIImage(named: icons[indexPath.row])
+        cell.imageView?.tintColor = .systemBlue
         return cell
     }
     

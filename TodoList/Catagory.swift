@@ -12,7 +12,7 @@ import RealmSwift
 class Catagory : Object{
     @objc dynamic var id = Int()
     @objc dynamic var name = String()
-    @objc dynamic var icon = "noIcon"
+    @objc dynamic var icon = "folder"
     
     let tasks = List<Task>()
 }

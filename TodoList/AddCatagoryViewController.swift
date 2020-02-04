@@ -44,7 +44,7 @@ class AddCatagoryViewController: UITableViewController, UITextFieldDelegate, Ico
             } else {
             doneButtonOutlet.isEnabled = true
             }
-            return true
+        return true
     }
     
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
