@@ -13,6 +13,7 @@ class ViewController: UITableViewController {
     let realm = try! Realm()
     var catagories : Results<Catagory>? = nil
     var index : Int?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -34,6 +35,22 @@ class ViewController: UITableViewController {
         cell.textLabel?.text = catagories![indexPath.row].name
         return cell
         
+    }
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            do {
+                try realm.write {
+                    let tasks = catagories![indexPath.row].tasks
+                    print(tasks)
+                    realm.delete(tasks)
+                    realm.delete(catagories![indexPath.row])
+                    self.viewWillAppear(true)
+                    print("Catagory Deleted.")
+                }
+            } catch {
+                print("Error deleting Catagory.")
+            }
+        }
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.index = indexPath.row

@@ -22,19 +22,6 @@ class TasksTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        let task = Task()
-//        task.id = 1
-//        task.name = "Buy Frootika"
-//
-//        do {
-//            try realm.write {
-//                catagory?.tasks.append(task)
-//                print("added")
-//            }
-//        } catch  {
-//            print("not added")
-//        }
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.title = catagory?.name
     }
@@ -54,9 +41,35 @@ class TasksTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "taskCell", for: indexPath)
         cell.textLabel?.text = tasks![indexPath.row].name
+        cell.accessoryType = tasks![indexPath.row].isCompleted == true ? .checkmark : .none
         return cell
     }
-    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            do {
+                try realm.write {
+                    realm.delete(tasks![indexPath.row])
+                    self.viewWillAppear(true)
+                    print("Deleted task.")
+                }
+            } catch {
+                print("Error Deleting Task.")
+            }
+        }
+    }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("selected \(indexPath.row)")
+        
+        do {
+            try realm.write {
+                tasks![indexPath.row].isCompleted = tasks![indexPath.row].isCompleted == true ? false : true
+                self.viewWillAppear(true)
+                print("Task Updated.")
+            }
+        } catch {
+            print("Error updating Task.")
+        }
+    }
     @IBAction func onClickAddNewTask(_ sender: Any) {
 
         performSegue(withIdentifier: "allTaskToNewTask", sender: self)

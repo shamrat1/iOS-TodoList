@@ -126,7 +126,7 @@ class NewTaskViewController: UIViewController, UITextFieldDelegate {
     }
     
     func incrementID() -> Int {
-        let id = (realm.objects(Catagory.self).max(ofProperty: "id") as Int? ?? 0) + 1
+        let id = (realm.objects(Task.self).max(ofProperty: "id") as Int? ?? 0) + 1
         return id
     }
 
