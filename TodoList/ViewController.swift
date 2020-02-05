@@ -32,7 +32,7 @@ class ViewController: UITableViewController {
         cell.imageView?.frame = CGRect(x: 8, y: 8, width: 36, height: 36)
         cell.imageView?.image = UIImage(named: catagories![indexPath.row].icon)
         
-        cell.textLabel?.text = catagories![indexPath.row].name
+        cell.textLabel?.text = "\(catagories![indexPath.row].name) (\(catagories![indexPath.row].tasks.count))"
         return cell
         
     }
