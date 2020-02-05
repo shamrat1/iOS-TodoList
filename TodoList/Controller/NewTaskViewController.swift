@@ -110,7 +110,7 @@ class NewTaskViewController: UIViewController, UITextFieldDelegate {
             print("Scheduling Notification")
             let content = UNMutableNotificationContent()
             content.title = "You've a task in pending."
-            content.body = "You're task is : \(editText.text!)"
+            content.body = editText.text!
             content.sound = UNNotificationSound.default
             
             let calender = Calendar(identifier: .gregorian)
