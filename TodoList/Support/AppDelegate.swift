@@ -9,6 +9,7 @@
 import UIKit
 import UserNotifications
 import RealmSwift
+import PaperOnboarding
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -28,7 +29,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         print("isDataPreloaded : \(UserDefaults.standard.bool(forKey: "isDataPreloaded"))")
-        preloadData()
+        
+        
+        if UserDefaults.standard.bool(forKey: "isDataPreloaded") != true{
+            self.window = UIWindow(frame: UIScreen.main.bounds)
+
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+
+            let initialViewController = storyboard.instantiateViewController(withIdentifier: "onboarding")
+
+            self.window?.rootViewController = initialViewController
+            self.window?.makeKeyAndVisible()
+            preloadData()
+        }
+        
+        
     
         return true
     }
@@ -54,8 +69,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
     func preloadData(){
-        if UserDefaults.standard.bool(forKey: "isDataPreloaded") != true{
+        
             let realm = try! Realm()
             // cat 1
             let catagory1 = Catagory()
@@ -91,9 +107,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
             }
             UserDefaults.standard.set(true, forKey: "isDataPreloaded")
-        }
+        
     }
-
+   
 
 }
 

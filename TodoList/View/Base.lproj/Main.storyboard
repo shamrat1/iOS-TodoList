@@ -209,7 +209,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NdJ-5F-aft" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2078" y="561"/>
+            <point key="canvasLocation" x="3016.8000000000002" y="560.86956521739137"/>
         </scene>
         <!--New Task-->
         <scene sceneID="phZ-tJ-4nj">
@@ -376,7 +376,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SaB-EM-MUv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2794" y="561"/>
+            <point key="canvasLocation" x="3732" y="560.86956521739137"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="yyl-g9-IaZ">
@@ -395,6 +395,60 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3xC-0d-4Cs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="344.80000000000001" y="191.1544227886057"/>
+        </scene>
+        <!--Onboarding View Controller-->
+        <scene sceneID="1vD-FL-pMM">
+            <objects>
+                <viewController storyboardIdentifier="onboarding" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bWV-QV-Skc" customClass="OnboardingViewController" customModule="TodoList" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gD5-Ml-WiO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GhF-n8-SLj" customClass="OnboardingView" customModule="TodoList" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6g2-1y-Ueh">
+                                <rect key="frame" x="16" y="513.5" width="343" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="9aZ-W9-h1g"/>
+                                </constraints>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Get Started">
+                                            <attributes>
+                                                <font key="NSFont" size="18" name="AvenirNext-DemiBold"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                                <connections>
+                                    <action selector="getStartedBtn:" destination="bWV-QV-Skc" eventType="touchUpInside" id="E7Y-NR-FcB"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="7f3-8F-NY2" firstAttribute="trailing" secondItem="GhF-n8-SLj" secondAttribute="trailing" id="Gsx-2Q-kME"/>
+                            <constraint firstItem="GhF-n8-SLj" firstAttribute="top" secondItem="gD5-Ml-WiO" secondAttribute="topMargin" id="Kth-0b-VW0"/>
+                            <constraint firstItem="7f3-8F-NY2" firstAttribute="trailing" secondItem="6g2-1y-Ueh" secondAttribute="trailing" constant="16" id="XuO-xF-4iH"/>
+                            <constraint firstItem="GhF-n8-SLj" firstAttribute="leading" secondItem="7f3-8F-NY2" secondAttribute="leading" id="hFu-Eg-pBQ"/>
+                            <constraint firstItem="6g2-1y-Ueh" firstAttribute="centerX" secondItem="gD5-Ml-WiO" secondAttribute="centerX" id="hvX-h9-Iyn"/>
+                            <constraint firstItem="6g2-1y-Ueh" firstAttribute="centerY" secondItem="gD5-Ml-WiO" secondAttribute="centerY" multiplier="1.6" id="kc2-bF-jB9"/>
+                            <constraint firstItem="6g2-1y-Ueh" firstAttribute="leading" secondItem="7f3-8F-NY2" secondAttribute="leading" constant="16" id="mCT-aM-ujb"/>
+                            <constraint firstItem="7f3-8F-NY2" firstAttribute="bottom" secondItem="GhF-n8-SLj" secondAttribute="bottom" id="sLZ-Mz-KNs"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="7f3-8F-NY2"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="aZD-qa-A83"/>
+                    <connections>
+                        <outlet property="getStartedBtn" destination="6g2-1y-Ueh" id="xTt-jg-vQK"/>
+                        <outlet property="viewOB" destination="GhF-n8-SLj" id="HVQ-ee-DdF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hny-ld-nEX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="833" y="954"/>
         </scene>
     </scenes>
     <resources>
