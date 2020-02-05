@@ -28,7 +28,7 @@ class AddCatagoryViewController: UITableViewController, UITextFieldDelegate, Ico
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
 //        self.navigationController?.navigationBar.prefersLargeTitles = true
-        print(realm.configuration.fileURL!)
+//        print(Realm.Configuration.defaultConfiguration.fileURL as? String)
     }
     
     
