@@ -38,7 +38,7 @@ class IconTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "iconCell", for: indexPath)
         cell.textLabel?.text = icons[indexPath.row]
         cell.imageView?.image = UIImage(named: icons[indexPath.row])
-        cell.imageView?.tintColor = .systemBlue
+//        cell.imageView?.tintColor = .systemBlue
         return cell
     }
     

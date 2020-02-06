@@ -8,11 +8,13 @@
 
 import UIKit
 import UserNotifications
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+//    let icons = ["calender","drink","flight","folder","meeting","photo","shopping","movie","bag","cake","gift"]
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -25,16 +27,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print("Permission Denied.")
             }
         }
-        
-//        let content = UNMutableNotificationContent()
-//        content.title = "Hello!"
-//        content.body = "I'm a Local Notifier."
-//        content.sound = UNNotificationSound.default
-//        
-//        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
-//        let request = UNNotificationRequest(identifier: "taskNotification", content: content, trigger: trigger)
-//        center.add(request)
-        
+        print("isDataPreloaded : \(UserDefaults.standard.bool(forKey: "isDataPreloaded"))")
+        preloadData()
+    
         return true
     }
 
@@ -58,6 +53,45 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    func preloadData(){
+        if UserDefaults.standard.bool(forKey: "isDataPreloaded") != true{
+            let realm = try! Realm()
+            // cat 1
+            let catagory1 = Catagory()
+            catagory1.id = 1
+            catagory1.name = "Shopping"
+            catagory1.icon = "shopping"
+            // cat 2
+            let catagory2 = Catagory()
+            catagory2.id = 2
+            catagory2.name = "Appointments"
+            catagory2.icon = "meeting"
+            // cat 3
+            let catagory3 = Catagory()
+            catagory3.id = 3
+            catagory3.name = "Todo's"
+            catagory3.icon = "calender"
+            // cat 3
+            let catagory4 = Catagory()
+            catagory4.id = 4
+            catagory4.name = "Movies"
+            catagory4.icon = "movie"
+            
+            let catagories: [Catagory] = [catagory1,catagory2,catagory3,catagory4]
+            for item in catagories{
+                
+                do{
+                    try realm.write {
+                        realm.add(item)
+                        print("Data preloaded.")
+                    }
+                }catch{
+                    print("Error preloading Data.")
+                }
+            }
+            UserDefaults.standard.set(true, forKey: "isDataPreloaded")
+        }
     }
 
 
