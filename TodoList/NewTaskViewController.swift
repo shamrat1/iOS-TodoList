@@ -65,7 +65,9 @@ class NewTaskViewController: UIViewController, UITextFieldDelegate {
         doneButtonOutlet.isEnabled = false
         return true
     }
+    //End of Textfield delegate
     
+    //MARK:- Writing into database
     @IBAction func onClickDone(_ sender: Any) {
         print("\(dueDate) \n \(reminder) \n \(editText.text!)")
         let id = incrementID()
@@ -86,7 +88,10 @@ class NewTaskViewController: UIViewController, UITextFieldDelegate {
         }
         navigationController?.popViewController(animated: true)
     }
+    //end of writing into database
     
+    //MARK:- Internal workings
+    // such as enabling and disabling views based on certain action
     @IBAction func onChangeDatePicker(_ sender: UIDatePicker) {
         print(sender.date)
         let dateFormatter = DateFormatter()
