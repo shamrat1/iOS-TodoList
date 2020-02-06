@@ -54,6 +54,52 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F2B6AB623EA92EB00193EFD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				21251BE223DD4119009BC412 /* Catagory.swift */,
+				21251BE423DD4186009BC412 /* Task.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0F2B6AB723EA930000193EFD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				21919D4C23DB34E60020C5A2 /* Main.storyboard */,
+				21919D5123DB34EF0020C5A2 /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0F2B6AB823EA930B00193EFD /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2113EF4923DC9ECF0009A7D2 /* AddCatagoryViewController.swift */,
+				21251BE623DD5A09009BC412 /* TasksTableViewController.swift */,
+				0405D6E123DFF04300B2C56D /* NewTaskViewController.swift */,
+				21919D4A23DB34E60020C5A2 /* ViewController.swift */,
+				046A4CF323E7F4390061D496 /* IconTableViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		0F2B6AB923EA934000193EFD /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				046A4CF523E81FF60061D496 /* CustomCell.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		0F2B6ABA23EA935300193EFD /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				21919D4823DB34E60020C5A2 /* AppDelegate.swift */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
 		21919D3C23DB34E60020C5A2 = {
 			isa = PBXGroup;
 			children = (
@@ -75,19 +121,13 @@
 		21919D4723DB34E60020C5A2 /* TodoList */ = {
 			isa = PBXGroup;
 			children = (
-				21919D4823DB34E60020C5A2 /* AppDelegate.swift */,
-				21919D4A23DB34E60020C5A2 /* ViewController.swift */,
-				2113EF4923DC9ECF0009A7D2 /* AddCatagoryViewController.swift */,
-				21919D4C23DB34E60020C5A2 /* Main.storyboard */,
 				21919D4F23DB34EF0020C5A2 /* Assets.xcassets */,
-				21919D5123DB34EF0020C5A2 /* LaunchScreen.storyboard */,
+				0F2B6ABA23EA935300193EFD /* Support */,
+				0F2B6AB923EA934000193EFD /* Extension */,
+				0F2B6AB823EA930B00193EFD /* Controller */,
+				0F2B6AB723EA930000193EFD /* View */,
+				0F2B6AB623EA92EB00193EFD /* Model */,
 				21919D5423DB34EF0020C5A2 /* Info.plist */,
-				21251BE223DD4119009BC412 /* Catagory.swift */,
-				21251BE423DD4186009BC412 /* Task.swift */,
-				21251BE623DD5A09009BC412 /* TasksTableViewController.swift */,
-				0405D6E123DFF04300B2C56D /* NewTaskViewController.swift */,
-				046A4CF323E7F4390061D496 /* IconTableViewController.swift */,
-				046A4CF523E81FF60061D496 /* CustomCell.swift */,
 			);
 			path = TodoList;
 			sourceTree = "<group>";
