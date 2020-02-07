@@ -20,29 +20,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        
-//        if UserDefaults.standard.bool(forKey: "isDataPreloaded") != true{
-            let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
-            let vc = (storyboard.instantiateViewController(withIdentifier: "OnboardingMain") as? OnboardingViewController)!
-            //        vc.modalPresentationStyle = .fullScreen
-            self.window?.rootViewController = vc
-            self.window?.makeKeyAndVisible()
-//            present(vc, animated: true, completion: nil)
-//        }
-        
-        
-        let center = UNUserNotificationCenter.current()
-        center.requestAuthorization(options: [.alert,.badge,.sound]) { (granted, error) in
-            if granted {
-                print("We have permission.")
-            }else{
-                print("Permission Denied.")
-            }
-        }
         print("isDataPreloaded : \(UserDefaults.standard.bool(forKey: "isDataPreloaded"))")
         
-        
-        preloadData()
+        if UserDefaults.standard.bool(forKey: "isDataPreloaded") != true{
+            
+            let center = UNUserNotificationCenter.current()
+            center.requestAuthorization(options: [.alert,.badge,.sound]) { (granted, error) in
+                if granted {
+                    print("We have permission.")
+                }else{
+                    print("Permission Denied.")
+                }
+            }
+            
+            loadOnboarding()
+            preloadData()
+        }
+
     
         return true
     }
@@ -68,44 +62,52 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    func loadOnboarding(){
+        let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
+        let vc = (storyboard.instantiateViewController(withIdentifier: "OnboardingMain") as? OnboardingViewController)!
+        //        vc.modalPresentationStyle = .fullScreen
+        self.window?.rootViewController = vc
+        self.window?.makeKeyAndVisible()
+        
+    }
     func preloadData(){
-        if UserDefaults.standard.bool(forKey: "isDataPreloaded") != true{
-            let realm = try! Realm()
-            // cat 1
-            let catagory1 = Catagory()
-            catagory1.id = 1
-            catagory1.name = "Shopping"
-            catagory1.icon = "shopping"
-            // cat 2
-            let catagory2 = Catagory()
-            catagory2.id = 2
-            catagory2.name = "Appointments"
-            catagory2.icon = "meeting"
-            // cat 3
-            let catagory3 = Catagory()
-            catagory3.id = 3
-            catagory3.name = "Todo's"
-            catagory3.icon = "calender"
-            // cat 3
-            let catagory4 = Catagory()
-            catagory4.id = 4
-            catagory4.name = "Movies"
-            catagory4.icon = "movie"
+        
+        let realm = try! Realm()
+        // cat 1
+        let catagory1 = Catagory()
+        catagory1.id = 1
+        catagory1.name = "Shopping"
+        catagory1.icon = "shopping"
+        // cat 2
+        let catagory2 = Catagory()
+        catagory2.id = 2
+        catagory2.name = "Appointments"
+        catagory2.icon = "meeting"
+        // cat 3
+        let catagory3 = Catagory()
+        catagory3.id = 3
+        catagory3.name = "Todo's"
+        catagory3.icon = "calender"
+        // cat 3
+        let catagory4 = Catagory()
+        catagory4.id = 4
+        catagory4.name = "Movies"
+        catagory4.icon = "movie"
+        
+        let catagories: [Catagory] = [catagory1,catagory2,catagory3,catagory4]
+        for item in catagories{
             
-            let catagories: [Catagory] = [catagory1,catagory2,catagory3,catagory4]
-            for item in catagories{
-                
-                do{
-                    try realm.write {
-                        realm.add(item)
-                        print("Data preloaded.")
-                    }
-                }catch{
-                    print("Error preloading Data.")
+            do{
+                try realm.write {
+                    realm.add(item)
+                    print("Data preloaded.")
                 }
+            }catch{
+                print("Error preloading Data.")
             }
-            UserDefaults.standard.set(true, forKey: "isDataPreloaded")
         }
+        UserDefaults.standard.set(true, forKey: "isDataPreloaded")
+        
     }
 
 
