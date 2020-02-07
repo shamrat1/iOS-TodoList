@@ -19,6 +19,9 @@ class ViewController: UITableViewController {
         // Do any additional setup after loading the view, typically from a nib.
         self.navigationController?.navigationBar.prefersLargeTitles = true
     }
+//    override func viewDidAppear(_ animated: Bool) {
+//        
+//    }
     override func viewWillAppear(_ animated: Bool) {
         catagories = realm.objects(Catagory.self)
         self.tableView.reloadData()

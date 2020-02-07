@@ -19,6 +19,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        
+//        if UserDefaults.standard.bool(forKey: "isDataPreloaded") != true{
+            let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
+            let vc = (storyboard.instantiateViewController(withIdentifier: "OnboardingMain") as? OnboardingViewController)!
+            //        vc.modalPresentationStyle = .fullScreen
+            self.window?.rootViewController = vc
+            self.window?.makeKeyAndVisible()
+//            present(vc, animated: true, completion: nil)
+//        }
+        
+        
         let center = UNUserNotificationCenter.current()
         center.requestAuthorization(options: [.alert,.badge,.sound]) { (granted, error) in
             if granted {
@@ -28,6 +40,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         print("isDataPreloaded : \(UserDefaults.standard.bool(forKey: "isDataPreloaded"))")
+        
+        
         preloadData()
     
         return true
